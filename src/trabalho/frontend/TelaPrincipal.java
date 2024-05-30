@@ -1,7 +1,11 @@
 package trabalho.frontend;
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -41,7 +45,8 @@ public class TelaPrincipal extends Application {
         MenuItem itemTela2 = new MenuItem("Lista de Funcionários");
         MenuItem itemTela3 = new MenuItem("Lista de Locais");
         MenuItem itemTela4 = new MenuItem("Lista de Organizações");
-        menuArquivo.getItems().addAll(itemTela1, itemTela2, itemTela3, itemTela4);
+        MenuItem itemTela5 = new MenuItem("Minhas Contas");
+        menuArquivo.getItems().addAll(itemTela1, itemTela2, itemTela3, itemTela4, itemTela5);
         
         menuBar.getMenus().addAll(menuArquivo);
         root.setTop(menuBar);
@@ -49,6 +54,7 @@ public class TelaPrincipal extends Application {
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setTitle("Menu App");
         primaryStage.show();
+        
         
         // Eventos de clique nos itens de menu
         itemTela1.setOnAction(event -> {
@@ -64,6 +70,15 @@ public class TelaPrincipal extends Application {
         itemTela4.setOnAction(event -> {
         	root.setCenter(new TelaDeListagemDeOrganizacoes(this));
         });
+        itemTela5.setOnAction(event -> {
+            try {
+                Parent contasRoot = FXMLLoader.load(getClass().getResource("contas.fxml"));
+                root.setCenter(contasRoot);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        
         root.setCenter(new TelaDeLogin(this));
     }
 	
