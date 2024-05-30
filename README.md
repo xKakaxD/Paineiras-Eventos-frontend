@@ -38,5 +38,5 @@ cd frontend-repositorio
 
 ## Contato
 
-- Nome: [Carlos D Moro]
-- E-mail: [ti.demoro@gmail.com]
+- Nome: Carlos D Moro
+- E-mail: ti.demoro@gmail.com
