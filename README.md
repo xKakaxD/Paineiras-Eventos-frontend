@@ -23,7 +23,7 @@ Este repositório contém a camada de frontend do projeto desenvolvido para a Fa
 1. Clone o repositório:
 
 ```
-git clone https://github.com/seu-usuario/frontend-repositorio.git
+git clone https://github.com/seuUsuario/Paineiras-Eventos-frontend.git
 cd frontend-repositorio
 ```
 
