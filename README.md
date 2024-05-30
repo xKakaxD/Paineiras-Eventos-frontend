@@ -22,8 +22,10 @@ Este repositório contém a camada de frontend do projeto desenvolvido para a Fa
 
 1. Clone o repositório:
 
+```
 git clone https://github.com/seu-usuario/frontend-repositorio.git
 cd frontend-repositorio
+```
 
 1. Importar o projeto no Eclipse:
    - Abra o Eclipse e selecione `File -> Import`.
