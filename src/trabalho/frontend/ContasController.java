@@ -63,16 +63,28 @@ public class ContasController implements Initializable {
 	// métodos públicos chamados quando o botão é clicado
 
 	public void salvar() {
-		Conta c = new Conta();
-		pegaValores(c);
-		service.grava(c.hashCode() + "", c);
-		atualizaDadosTabela();
+	    Conta c = new Conta();   
+	    pegaValores(c);   // Preenche a nova instância com os valores dos campos da tela
+	    service.grava(c.hashCode() + "", c);     // Salva a nova conta utilizando o serviço de persistência
+	    atualizaDadosTabela();     // Atualiza os dados na tabela para refletir a adição da nova conta
 	}
 
+
 	public void atualizar() {
+		Conta contaSelecionada = tblContas.getSelectionModel().getSelectedItem();   // Obtém a conta atualmente selecionada na tabela
+	    if (contaSelecionada != null) {
+	        pegaValores(contaSelecionada); // Pega os valores dos campos da tela e atualiza a conta selecionada
+	        service.grava(contaSelecionada.hashCode() + "", contaSelecionada); // Salva a conta atualizada
+	        atualizaDadosTabela(); // Atualiza a tabela para refletir as mudanças
+	    }
 	}
 
 	public void apagar() {
+		Conta contaSelecionada = tblContas.getSelectionModel().getSelectedItem();
+	    if (contaSelecionada != null) {
+	        service.apagar(contaSelecionada.hashCode() + "", contaSelecionada); // Remove a conta do serviço de persistência
+	        atualizaDadosTabela(); // Atualiza a tabela para refletir as mudanças
+	    }
 	}
 
 	public void limpar() {
@@ -118,7 +130,23 @@ public class ContasController implements Initializable {
 		BooleanBinding camposPreenchidos = txtConsc.textProperty().isEmpty().or(txtDesc.textProperty().isEmpty())
 				.or(dpVencimento.valueProperty().isNull());
 		// indica se há algo selecionado na tabela
-		BooleanBinding algoSelecionado = tblContas.getSelectionModel().selectedItemProperty().isNull();
+		BooleanBinding algoSelecionado = tblContas.getSelectionModel().selectedItemProperty().isNull();	
+		// quando algo é selecionado na tabela, preenchemos os campos de entrada com os valores para o usuário editar
+	    tblContas.getSelectionModel().selectedItemProperty().addListener((b, o, n) -> {
+	        if (n != null) {
+	            // Preenche os campos da tela com os valores da conta selecionada
+	            txtConsc.setText(n.getCredor());
+	            txtDesc.setText(n.getDescricao());
+	            if (n.getDataVencimento() != null) {
+	                dpVencimento.setValue(n.getDataVencimento().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+	            } else {
+	                dpVencimento.setValue(null);
+	            }
+	        } else {
+	            // Limpa os campos se nada estiver selecionado
+	            limpar();
+	        }
+	    });
 		// alguns botões só são habilitados se algo foi selecionado na tabela
 		btnApagar.disableProperty().bind(algoSelecionado);
 		btnAtualizar.disableProperty().bind(algoSelecionado);
