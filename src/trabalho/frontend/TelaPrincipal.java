@@ -43,10 +43,10 @@ public class TelaPrincipal extends Application {
         Menu menuArquivo = new Menu("Arquivo");
         MenuItem itemTela1 = new MenuItem("Agendamentos");
         MenuItem itemTela2 = new MenuItem("Lista de Funcionários");
-        MenuItem itemTela3 = new MenuItem("Lista de Locais");
-        MenuItem itemTela4 = new MenuItem("Lista de Organizações");
+       // MenuItem itemTela3 = new MenuItem("Lista de Locais");
+       // MenuItem itemTela4 = new MenuItem("Lista de Organizações");
         MenuItem itemTela5 = new MenuItem("Minhas Contas");
-        menuArquivo.getItems().addAll(itemTela1, itemTela2, itemTela3, itemTela4, itemTela5);
+        menuArquivo.getItems().addAll(itemTela1, itemTela2, itemTela5);
         
         menuBar.getMenus().addAll(menuArquivo);
         root.setTop(menuBar);
@@ -62,14 +62,14 @@ public class TelaPrincipal extends Application {
         });
         
         itemTela2.setOnAction(event -> {
-            root.setCenter(new TelaDeListagemDeFuncionarios(this));
+            root.setCenter(new TelaDeListagemDeUsuarios(this));
         });
-        itemTela3.setOnAction(event -> {
-        	root.setCenter(new TelaDeListagemDeLocais(this));
-        });
-        itemTela4.setOnAction(event -> {
-        	root.setCenter(new TelaDeListagemDeOrganizacoes(this));
-        });
+       // itemTela3.setOnAction(event -> {
+     //   	root.setCenter(new TelaDeListagemDeLocais(this));
+     //   });
+     //   itemTela4.setOnAction(event -> {
+    //    	root.setCenter(new TelaDeListagemDeOrganizacoes(this));
+    //    });
         itemTela5.setOnAction(event -> {
             try {
                 Parent contasRoot = FXMLLoader.load(getClass().getResource("contas.fxml"));

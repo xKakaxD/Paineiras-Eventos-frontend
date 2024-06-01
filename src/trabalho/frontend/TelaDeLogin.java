@@ -7,7 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import trabalho.backend.BancoDeDados2;
+//import trabalho.backend.BancoDeDados; para quando utilizar os dados do banco
 import trabalho.dominio.Usuario;
 
 public class TelaDeLogin extends StackPane {
