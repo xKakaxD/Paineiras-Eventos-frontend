@@ -14,7 +14,7 @@ public class TelaDeListagemDeUsuarios extends StackPane{
 	public TelaDeListagemDeUsuarios(TelaPrincipal telaPrincipal) {
 		List<Usuario> pessoas = telaPrincipal.service.listarElementos(Usuario.class);
 
-        TableView<Usuario> tabela = new TableView<>();//TODO: fazer um para funcionario
+        TableView<Usuario> tabela = new TableView<>();//TODO: fazer um para funcionario, moradores, agendamentos, eventos...
         TableColumn<Usuario, Integer> colunaId = new TableColumn<>("ID");
         TableColumn<Usuario, String> colunaNome = new TableColumn<>("Nome");
         TableColumn<Usuario, String> colunaCpf = new TableColumn<>("Cpf");

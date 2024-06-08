@@ -42,16 +42,16 @@ public class TelaPrincipal extends Application {
         // Menu Arquivo
         Menu menuArquivo = new Menu("Arquivo");
         MenuItem itemTela1 = new MenuItem("Agendamentos");
-        MenuItem itemTela2 = new MenuItem("Lista de Funcionários");
+        MenuItem itemTela2 = new MenuItem("Lista de Usuarios");
        // MenuItem itemTela3 = new MenuItem("Lista de Locais");
-       // MenuItem itemTela4 = new MenuItem("Lista de Organizações");
+        MenuItem itemTela4 = new MenuItem("Gerir Usuários");
         MenuItem itemTela5 = new MenuItem("Minhas Contas");
-        menuArquivo.getItems().addAll(itemTela1, itemTela2, itemTela5);
+        menuArquivo.getItems().addAll(itemTela1,itemTela2,itemTela4,itemTela5);
         
         menuBar.getMenus().addAll(menuArquivo);
         root.setTop(menuBar);
 
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 1000, 800));
         primaryStage.setTitle("Menu App");
         primaryStage.show();
         
@@ -64,9 +64,14 @@ public class TelaPrincipal extends Application {
         itemTela2.setOnAction(event -> {
             root.setCenter(new TelaDeListagemDeUsuarios(this));
         });
-       // itemTela3.setOnAction(event -> {
-     //   	root.setCenter(new TelaDeListagemDeLocais(this));
-     //   });
+        itemTela4.setOnAction(event -> {
+            try {
+                Parent usuariosRoot = FXMLLoader.load(getClass().getResource("usuarios.fxml"));
+                root.setCenter(usuariosRoot);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
      //   itemTela4.setOnAction(event -> {
     //    	root.setCenter(new TelaDeListagemDeOrganizacoes(this));
     //    });
